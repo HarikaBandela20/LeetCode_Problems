@@ -23,6 +23,7 @@ class Solution {
         addnodes(root.left, key);
         if (root.val != key) {
             x.add(root);
+            System.out.println(root.val);
         }
         addnodes(root.right, key);
     }
