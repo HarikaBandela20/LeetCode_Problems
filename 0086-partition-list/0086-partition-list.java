@@ -9,35 +9,27 @@
  * }
  */
 class Solution {
-    List<Integer> l1=new ArrayList<Integer>();
-    List<Integer> l2=new ArrayList<Integer>();
-    public void addnodesvalues(ListNode head, int x1){
-        if(head==null){
-            return;
-        }
-        if(head.val<x1){
-            l1.add(head.val);
-        }else{
-            l2.add(head.val);
-        }
-        addnodesvalues(head.next,x1);
-    }
-    public ListNode addnodes(List<Integer> l){
-        ListNode head1=new ListNode(l.get(0));
-        ListNode temp=head1;
-        for(int i=1;i<l.size();i++){
-            ListNode temp1=new ListNode(l.get(i));
-            temp.next=temp1;
-            temp=temp1;
-        }
-        return head1;
-    }
     public ListNode partition(ListNode head, int x) {
-        addnodesvalues(head,x);
-        l1.addAll(l2);
-        if(l1.size()==0){
+        if (head == null) {
             return head;
         }
-        return addnodes(l1);
+        ListNode less_than_x = new ListNode(0); 
+        ListNode more_than_x = new ListNode(0);
+        ListNode less_head = less_than_x;
+        ListNode more_head = more_than_x;
+
+        while (head != null) {
+            if (head.val < x) {
+                less_than_x.next = head;
+                less_than_x = less_than_x.next;
+            } else {
+                more_than_x.next = head;
+                more_than_x = more_than_x.next;
+            }
+            head = head.next;
+        }
+        more_than_x.next = null; 
+        less_than_x.next = more_head.next;
+        return less_head.next; 
     }
 }
