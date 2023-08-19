@@ -18,9 +18,11 @@ class Solution {
             h.put(i,"false");
         }
         scan(rooms,rooms.get(0));
-        Set<String> valuesSet = new HashSet<>(h.values());
-        if(valuesSet.size()==2){
-            return false;
+        //System.out.println(h);
+        for(int i:h.keySet()){
+            if(h.get(i)=="false"){
+                return false;
+            }
         }
         return true;
     }
