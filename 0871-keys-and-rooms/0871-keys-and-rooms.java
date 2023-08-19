@@ -14,13 +14,8 @@ class Solution {
     }
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         h.put(0,"true");
-        for(int i=0;i<rooms.size();i++){
-            List<Integer> x=new ArrayList<Integer>(rooms.get(i));
-            for(int j:x){
-                if(!h.containsKey(j)){
-                    h.put(j,"false");
-                }
-            }
+        for(int i=1;i<rooms.size();i++){
+            h.put(i,"false");
         }
         scan(rooms,rooms.get(0));
         //System.out.println(h);
