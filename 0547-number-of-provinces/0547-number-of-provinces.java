@@ -23,7 +23,6 @@ class Solution {
             }
             l.add(temp);
         }
-        System.out.println(l);
         for(int i=0;i<n;i++){
             ArrayList<Integer> sequence=new ArrayList<Integer>(); 
             sequence.add(i);
@@ -33,7 +32,6 @@ class Solution {
                 result.add(r1);
             }
         }
-        System.out.println(result);
         return result.size();
     }
 }
