@@ -16,7 +16,6 @@ class Solution {
             sum=sum+i;
         }
         Collections.sort(l,Collections.reverseOrder());
-        System.out.println(l);
         int count=l.get(0);
         int lastele=l.get(0);
         for(int i=1;i<l.size();i++){
@@ -32,7 +31,6 @@ class Solution {
                 break;
             }
         }
-        System.out.println(l);
         return sum-count;
     }
 }
