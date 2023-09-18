@@ -24,18 +24,27 @@ class Solution {
                 h.put(a[i],t);
             }
         }
-        System.out.println(h);
         int res[]=new int[k];
         int index=0;
         Collections.sort(m);
         for(int j:m){
-            for(int i=0;i<a.length;i++){
+            ArrayList<Integer> t=new ArrayList<Integer>(h.get(j));
+            if(index==k){
+                break;
+                }
+            if(t.size()==1){
+                res[index]=t.get(0);
+                index++;
+            }else{
                 if(index==k){
                     break;
                 }
-                if(a[i]==j){
+                for(int i:t){
                     res[index]=i;
                     index++;
+                    if(index==k){
+                        break;
+                    }
                 }
             }
         }
