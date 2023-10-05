@@ -33,18 +33,11 @@ class Solution {
         }
         //System.out.println(fn+" & "+sn);
         int cap=(nums.length)/3;
-        if(fn==sn){
-            if(count1+count2>cap){
-                res.add(fn);
-                return res;
-            }
-        }else{
-            if(count1>cap){
-                res.add(fn);
-            }
-            if(count2>cap){
-                res.add(sn);
-            }
+        if(count1>cap){
+            res.add(fn);
+        }
+        if(count2>cap){
+            res.add(sn);
         }
         return res;
     }
