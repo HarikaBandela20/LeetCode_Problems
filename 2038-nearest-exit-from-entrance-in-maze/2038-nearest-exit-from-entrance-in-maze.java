@@ -1,43 +1,63 @@
+
+class Pair{
+    int first;
+    int second;
+    int step;
+    Pair(int fst,int scnd,int step){
+        this.first=fst;
+        this.second=scnd;
+        this.step=step;
+    }
+}
+
 class Solution {
     public int nearestExit(char[][] maze, int[] entrance) {
-        int m = maze.length;
-        int n = maze[0].length;
+        int n=maze.length;
+        int m=maze[0].length;
+
+        int x=entrance[0];
+        int y=entrance[1];
+
+        int delRow[]={1,-1,0,0};
+        int delCol[]={0,0,1,-1};
         
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        boolean[][] visited = new boolean[m][n];
+        int ans=0;
         
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[]{entrance[0], entrance[1]});
-        visited[entrance[0]][entrance[1]] = true;
+        Queue<Pair>q=new LinkedList<Pair>();
+        q.add(new Pair(x,y,0));
         
-        int steps = 0;
-        
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            steps++;
+        while(!q.isEmpty()){
+            int row=q.peek().first;
+            int col=q.peek().second;
+            int step=q.peek().step;
+            maze[row][col]='+';
+
             
-            for (int i = 0; i < size; i++) {
-                int[] current = queue.poll();
-                int x = current[0];
-                int y = current[1];
-                
-                for (int[] dir : directions) {
-                    int newX = x + dir[0];
-                    int newY = y + dir[1];
+            q.poll();
+
+            for(int i=0;i<4;i++){
+                int nrow=row+delRow[i];
+                int ncol=col+delCol[i];
+
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && maze[nrow][ncol]=='.'){
+                    maze[nrow][ncol]='+';
+                    q.add(new Pair(nrow,ncol,step+1));
                     
-                    if (newX >= 0 && newX < m && newY >= 0 && newY < n && maze[newX][newY] == '.' && !visited[newX][newY]) {
-                        if (newX == 0 || newX == m - 1 || newY == 0 || newY == n - 1) {
-                            return steps;  // Found the nearest exit.
-                        }
-                        
-                        queue.offer(new int[]{newX, newY});
-                        visited[newX][newY] = true;
-                    }
+                    
+                    if(nrow==0 || ncol==0 || nrow==n-1 || ncol==m-1){
+                        ans=step+1;
+                        return ans;
+                    }  
+                    
                 }
+
             }
+            
         }
-        
-        return -1;  // No exit found.
+        return -1;
+
+
     }
+
 }
 
