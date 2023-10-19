@@ -1,7 +1,5 @@
 class Solution {
-    public String check(String s1){
-        String x="";
-        Stack<Character> st=new Stack<Character>();
+    public void check(String s1,Stack<Character> st){
         for(char c:s1.toCharArray()){
             if(c=='#'){
                 if(st.isEmpty()){
@@ -13,14 +11,12 @@ class Solution {
                 st.add(c);
             }
         }
-        while(!st.isEmpty()){
-            x=x+st.pop();
-        }
-        return x;
     }
     public boolean backspaceCompare(String s, String t) {
-        String a=check(s);
-        String b=check(t);
+        Stack<Character> a=new Stack<Character>();
+        Stack<Character> b=new Stack<Character>();
+        check(s,a);
+        check(t,b);
         if(a.equals(b)){
             return true;
         }
