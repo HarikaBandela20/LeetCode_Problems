@@ -1,5 +1,5 @@
 class Solution {
-    private HashMap<String, Integer> uniquePathsMap = new HashMap<>();
+    HashMap<String, Integer> uniquePathsMap = new HashMap<>();
 
     public int countpaths(int start, int end, int m1, int n1, String res) {
         if (start > m1 - 1 || end > n1 - 1) {
