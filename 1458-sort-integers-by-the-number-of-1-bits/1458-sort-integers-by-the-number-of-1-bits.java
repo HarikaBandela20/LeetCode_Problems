@@ -33,7 +33,6 @@ class Solution {
                 h1.put(h.get(i),temp);
             }
         }
-        //System.out.println(h1);
         int c=0;
         for(int i:h1.keySet()){
             ArrayList<Integer> temp=new ArrayList<Integer>(h1.get(i));
