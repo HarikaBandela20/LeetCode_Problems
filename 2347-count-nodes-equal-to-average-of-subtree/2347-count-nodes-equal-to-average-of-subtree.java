@@ -46,9 +46,6 @@ class Solution {
                 ans++;
             }
         }
-        System.out.println(s);
-        System.out.println(n);
-        System.out.println(e);
         return ans;
     }
 }
